@@ -4,6 +4,10 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 金・銀・銅の壺を、大・中・小のサイズ別に表示しています。
 
+## スクリーンショット
+
+![黄金堂トップページ](docs/images/golden-pot-shop.png)
+
 ## 公開サイト
 
 https://golden-pot-shop-1.onrender.com
