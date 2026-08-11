@@ -621,3 +621,24 @@ body {
     padding: 26px;
   }
 }
+/* GitHubリンク */
+.github-link {
+  margin-top: 18px;
+}
+
+.github-link a {
+  display: inline-block;
+  padding: 10px 22px;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: 0.2s;
+}
+
+.github-link a:hover {
+  background: #d4af37;
+  color: #111;
+}
