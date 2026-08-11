@@ -1,0 +1,623 @@
+body {
+  margin: 0;
+  background: #0d0d0d;
+  color: #f5f1e8;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+.shop-page {
+  min-height: 100vh;
+}
+
+.shop-header {
+  text-align: center;
+  padding: 70px 20px 50px;
+  background: linear-gradient(135deg, #080808, #222);
+  border-bottom: 1px solid #b89645;
+}
+
+.shop-header h1 {
+  margin: 0;
+  font-family: serif;
+  font-size: 52px;
+  letter-spacing: 12px;
+  color: #d4af37;
+}
+
+.shop-header > p:not(.notice) {
+  letter-spacing: 5px;
+  color: #aaa;
+}
+
+.notice {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #bbb;
+}
+
+.products-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.product-card {
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card h2 {
+  margin: 20px 0 10px;
+  font-family: serif;
+  font-size: 25px;
+}
+
+.product-meta {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.price {
+  color: #d4af37;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 14px 0;
+}
+
+.description {
+  color: #ccc;
+  min-height: 48px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.product-button {
+  display: inline-block;
+  margin-top: auto;
+  align-self: center;
+  padding: 11px 24px;
+  color: #111;
+  background: #d4af37;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.product-button:hover {
+  background: #f3d76e;
+}
+
+/* 壺画像エリア */
+.pot-image-wrap {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pot-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* サイズ別 */
+.pot-large .pot-image {
+  width: 170px;
+  max-height: 210px;
+}
+
+.pot-medium .pot-image {
+  width: 145px;
+  max-height: 185px;
+}
+
+.pot-small .pot-image {
+  width: 120px;
+  max-height: 160px;
+}
+
+@media (max-width: 800px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-header h1 {
+    font-size: 38px;
+  }
+}
+/* =========================
+   商品詳細ページ
+========================= */
+
+.product-show-page {
+  min-height: 100vh;
+  padding: 70px 20px;
+  background: #0d0d0d;
+}
+
+.product-show-card {
+  max-width: 900px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 45px;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.product-show-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 420px;
+}
+
+.detail-pot-image {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-show-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-label {
+  margin: 0 0 10px;
+  color: #d4af37;
+  font-size: 14px;
+  letter-spacing: 3px;
+}
+
+.product-show-info h1 {
+  margin: 0 0 25px;
+
+  color: #f5f1e8;
+  font-family: serif;
+  font-size: 40px;
+}
+
+.detail-meta {
+  color: #aaa;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-price {
+  color: #d4af37;
+  font-size: 34px;
+  font-weight: bold;
+  margin: 10px 0 25px;
+}
+
+.detail-description {
+  color: #ccc;
+  line-height: 1.9;
+  margin-bottom: 35px;
+}
+
+.detail-actions {
+  margin-top: 10px;
+}
+
+.detail-back-button {
+  display: inline-block;
+  padding: 12px 26px;
+
+  background: #d4af37;
+  color: #111;
+
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.detail-back-button:hover {
+  background: #f3d76e;
+}
+
+@media (max-width: 800px) {
+  .product-show-card {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .product-show-image {
+    min-height: auto;
+  }
+
+  .detail-pot-image {
+    max-width: 220px;
+  }
+
+  .product-show-info h1 {
+    font-size: 32px;
+  }
+}
+/* 詳細ページ：壺のサイズ切り替え */
+
+.detail-pot-large .detail-pot-image {
+  max-width: 320px;
+}
+
+.detail-pot-medium .detail-pot-image {
+  max-width: 260px;
+}
+
+.detail-pot-small .detail-pot-image {
+  max-width: 200px;
+}
+/* =========================
+   管理ダッシュボード
+========================= */
+
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 50px 24px;
+  background: #0d0d0d;
+  color: #f5f1e8;
+}
+
+.admin-header {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-subtitle {
+  margin: 0 0 8px;
+  color: #d4af37;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-family: serif;
+  font-size: 38px;
+}
+
+.admin-shop-link {
+  display: inline-block;
+  padding: 11px 20px;
+  background: #d4af37;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.admin-summary {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.summary-card {
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 24px 18px;
+  text-align: center;
+}
+
+.summary-label {
+  margin: 0 0 12px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.summary-number {
+  margin: 0;
+  color: #d4af37;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.admin-menu {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.admin-menu h2 {
+  margin-bottom: 20px;
+  font-family: serif;
+  font-size: 26px;
+}
+
+.admin-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.admin-menu-card {
+  display: block;
+  padding: 28px;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #f5f1e8;
+  text-decoration: none;
+}
+
+.admin-menu-card:hover {
+  border-color: #d4af37;
+}
+
+.admin-menu-card h3 {
+  margin: 0 0 10px;
+  color: #d4af37;
+  font-size: 22px;
+}
+
+.admin-menu-card p {
+  margin: 0;
+  color: #bbb;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .admin-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-summary,
+  .admin-menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   管理用 商品一覧
+========================= */
+
+.admin-products-page {
+  min-height: 100vh;
+  padding: 50px 24px;
+  background: #0d0d0d;
+  color: #f5f1e8;
+}
+
+.admin-products-header {
+  max-width: 1100px;
+  margin: 0 auto 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-products-header h1 {
+  margin: 0;
+  font-family: serif;
+  font-size: 38px;
+}
+
+.admin-products-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-primary-button,
+.admin-secondary-button {
+  display: inline-block;
+  padding: 11px 18px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.admin-primary-button {
+  background: #d4af37;
+  color: #111;
+}
+
+.admin-secondary-button {
+  background: #2a2a2a;
+  color: #f5f1e8;
+  border: 1px solid #444;
+}
+
+.admin-products-table-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.admin-products-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.admin-products-table th,
+.admin-products-table td {
+  padding: 18px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.admin-products-table th {
+  color: #d4af37;
+  font-size: 14px;
+}
+
+.admin-products-table td {
+  color: #ddd;
+}
+
+.admin-products-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-product-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-small-button,
+.admin-delete-button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.admin-small-button {
+  background: #d4af37;
+  color: #111;
+  text-decoration: none;
+}
+
+.admin-delete-button {
+  border: none;
+  background: #8f2d2d;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .admin-products-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* =========================
+   管理用 商品フォーム
+========================= */
+
+.admin-form-page {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: #0d0d0d;
+  color: #f5f1e8;
+}
+
+.admin-form-card {
+  max-width: 650px;
+  margin: 0 auto;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.admin-form-card h1 {
+  margin: 0 0 30px;
+  font-family: serif;
+  font-size: 34px;
+}
+
+.admin-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  background: #0f0f0f;
+  color: #f5f1e8;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  margin-top: 10px;
+}
+
+.form-actions input.admin-primary-button {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.admin-form-links {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-errors {
+  padding: 15px;
+  background: #3a1616;
+  border: 1px solid #8f2d2d;
+  border-radius: 6px;
+}
+
+.form-errors h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+@media (max-width: 650px) {
+  .admin-form-card {
+    padding: 26px;
+  }
+}

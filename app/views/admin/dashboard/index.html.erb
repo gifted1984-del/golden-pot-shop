@@ -1,0 +1,75 @@
+<div class="admin-dashboard">
+
+  <header class="admin-header">
+    <div>
+      <p class="admin-subtitle">GOLDEN POT STORE</p>
+      <h1>管理ダッシュボード</h1>
+    </div>
+
+    <%= link_to "ショップを見る",
+                products_path,
+                class: "admin-shop-link" %>
+  </header>
+
+  <section class="admin-summary">
+
+    <div class="summary-card">
+      <p class="summary-label">総アクセス数</p>
+      <p class="summary-number"><%= @visit_count %></p>
+    </div>
+
+    <div class="summary-card">
+      <p class="summary-label">商品総数</p>
+      <p class="summary-number"><%= @product_count %></p>
+    </div>
+
+    <div class="summary-card">
+      <p class="summary-label">金の商品</p>
+      <p class="summary-number"><%= @gold_count %></p>
+    </div>
+
+    <div class="summary-card">
+      <p class="summary-label">銀の商品</p>
+      <p class="summary-number"><%= @silver_count %></p>
+    </div>
+
+    <div class="summary-card">
+      <p class="summary-label">銅の商品</p>
+      <p class="summary-number"><%= @copper_count %></p>
+    </div>
+
+  </section>
+
+  <section class="admin-menu">
+
+    <h2>管理メニュー</h2>
+
+    <div class="admin-menu-grid">
+
+     <%= link_to admin_products_index_path,
+            class: "admin-menu-card" do %>
+
+        <h3>商品一覧</h3>
+
+        <p>
+          登録されている商品を確認します。
+        </p>
+
+      <% end %>
+
+      <%= link_to new_product_path,
+                  class: "admin-menu-card" do %>
+
+        <h3>商品を追加</h3>
+
+        <p>
+          新しい商品を登録します。
+        </p>
+
+      <% end %>
+
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,61 @@
+<% image_file =
+  case @product.material
+  when "金" then "pot_gold.png"
+  when "銀" then "pot_silver.png"
+  when "銅" then "pot_copper.png"
+  end
+%>
+
+<div class="product-show-page">
+
+  <div class="product-show-card">
+
+    <% detail_size_class =
+  case @product.size
+  when "大" then "detail-pot-large"
+  when "中" then "detail-pot-medium"
+  when "小" then "detail-pot-small"
+  end
+%>
+
+<div class="product-show-image <%= detail_size_class %>">
+  <%= image_tag image_file,
+        class: "detail-pot-image",
+        alt: @product.name %>
+</div>
+
+    <div class="product-show-info">
+
+      <p class="detail-label">
+        <%= @product.material %>製
+      </p>
+
+      <h1><%= @product.name %></h1>
+
+      <p class="detail-meta">
+        素材：<%= @product.material %>
+        ／
+        サイズ：<%= @product.size %>
+      </p>
+
+      <p class="detail-price">
+        <%= number_with_delimiter(@product.price / 10_000) %>万円
+      </p>
+
+      <p class="detail-description">
+        <%= @product.description %>
+      </p>
+
+      <div class="detail-actions">
+
+        <%= link_to "商品一覧に戻る",
+                    products_path,
+                    class: "detail-back-button" %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

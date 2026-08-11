@@ -1,0 +1,63 @@
+<div class="shop-page">
+  <header class="shop-header">
+    <h1>黄金堂</h1>
+    <p>GOLDEN POT STORE</p>
+
+    <p class="notice">
+      ※このサイトは岩谷努の架空サイトです。実際の購入はできません。
+    </p>
+<p class="visit-count">
+  アクセス数：<%= @visit.count %>回
+</p>
+  </header>
+
+  <main class="products-grid">
+    <% @products.each do |product| %>
+
+      <% size_class =
+        case product.size
+        when "大" then "pot-large"
+        when "中" then "pot-medium"
+        when "小" then "pot-small"
+        end
+      %>
+
+      <% image_file =
+        case product.material
+        when "金" then "pot_gold.png"
+        when "銀" then "pot_silver.png"
+        when "銅" then "pot_copper.png"
+        end
+      %>
+
+      <section class="product-card">
+
+        <div class="pot-image-wrap <%= size_class %>">
+          <%= image_tag image_file,
+                class: "pot-image",
+                alt: product.name %>
+        </div>
+
+        <h2><%= product.name %></h2>
+
+        <p class="product-meta">
+          素材：<%= product.material %> ／ サイズ：<%= product.size %>
+        </p>
+
+        <p class="price">
+          <%= number_with_delimiter(product.price / 10_000) %>万円
+        </p>
+
+        <p class="description">
+          <%= product.description %>
+        </p>
+
+        <%= link_to "商品を見る",
+                    product_path(product),
+                    class: "product-button" %>
+
+      </section>
+
+    <% end %>
+  </main>
+</div>

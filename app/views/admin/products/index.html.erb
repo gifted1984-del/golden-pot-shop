@@ -1,0 +1,63 @@
+<div class="admin-products-page">
+
+  <header class="admin-products-header">
+    <div>
+      <p class="admin-subtitle">GOLDEN POT STORE</p>
+      <h1>商品管理</h1>
+    </div>
+
+    <div class="admin-products-actions">
+      <%= link_to "ダッシュボードへ戻る",
+                  admin_dashboard_index_path,
+                  class: "admin-secondary-button" %>
+
+      <%= link_to "商品を追加",
+                  new_product_path,
+                  class: "admin-primary-button" %>
+    </div>
+  </header>
+
+  <section class="admin-products-table-wrap">
+
+    <table class="admin-products-table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>素材</th>
+          <th>サイズ</th>
+          <th>価格</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.material %></td>
+            <td><%= product.size %></td>
+            <td><%= number_with_delimiter(product.price / 10_000) %>万円</td>
+
+            <td class="admin-product-buttons">
+              <%= link_to "表示",
+                          product_path(product),
+                          class: "admin-small-button" %>
+
+              <%= link_to "編集",
+                          edit_product_path(product),
+                          class: "admin-small-button" %>
+
+              <%= button_to "削除",
+                            product_path(product),
+                            method: :delete,
+                            data: { turbo_confirm: "本当に削除しますか？" },
+                            class: "admin-delete-button" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </section>
+
+</div>
