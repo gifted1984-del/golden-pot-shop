@@ -1,13 +1,25 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin!, except: %i[ index show ]
 
   # GET /products or /products.json
   def index
-  @products = Product.all
+    @query = params[:query].to_s.strip
+    @material = filter_value(:material, Product::MATERIALS)
+    @size = filter_value(:size, Product::SIZES)
 
-  @visit = Visit.first_or_create!(count: 0)
-  @visit.increment!(:count)
-end
+    @products = Product.order(:material, :price)
+    @products = @products.where(material: @material) if @material
+    @products = @products.where(size: @size) if @size
+
+    if @query.present?
+      escaped_query = ActiveRecord::Base.sanitize_sql_like(@query)
+      @products = @products.where("name LIKE :query OR description LIKE :query", query: "%#{escaped_query}%")
+    end
+
+    @visit = Visit.first_or_create!(count: 0)
+    @visit.increment!(:count)
+  end
 
   # GET /products/1 or /products/1.json
   def show
@@ -69,5 +81,10 @@ end
     # Only allow a list of trusted parameters through.
     def product_params
       params.expect(product: [ :name, :material, :size, :price, :description ])
+    end
+
+    def filter_value(key, allowed_values)
+      value = params[key].presence
+      value if allowed_values.include?(value)
     end
 end

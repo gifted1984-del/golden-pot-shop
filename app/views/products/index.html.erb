@@ -1,72 +1,100 @@
+<% content_for :title, "黄金堂 | Golden Pot Shop" %>
+
 <div class="shop-page">
-  <header class="shop-header">
-    <h1>黄金堂</h1>
-    <p>GOLDEN POT STORE</p>
+  <header class="hero" id="top">
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <%= link_to "黄金堂", products_path, class: "wordmark", aria: { label: "黄金堂 ホーム" } %>
+      <a href="#collection" class="nav-link">コレクション</a>
+    </nav>
 
-    <p class="notice">
-      ※このサイトは岩谷努の架空サイトです。実際の購入はできません。
-    </p>
-<p class="visit-count">
-  アクセス数：<%= @visit.count %>回
-</p>
+    <div class="hero-content">
+      <p class="eyebrow">A STUDY IN METAL AND FORM</p>
+      <h1>黄金堂</h1>
+      <p class="hero-kicker">GOLDEN POT SHOP</p>
+      <p class="hero-copy">金、銀、銅。静かな存在感を宿す、
+        <br class="desktop-only">一点ものの壺を集めました。</p>
+      <a href="#collection" class="button button-primary">コレクションを見る <span aria-hidden="true">↓</span></a>
+    </div>
 
-<p class="github-link">
-  <a href="https://github.com/gifted1984-del/golden-pot-shop"
-     target="_blank"
-     rel="noopener noreferrer">
-    GitHubはこちら
-  </a>
-</p>
+    <div class="hero-object" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <%= image_tag "pot_gold.png", class: "hero-pot", alt: "" %>
+    </div>
 
+    <p class="hero-footnote">架空のポートフォリオサイトです。商品の購入はできません。</p>
   </header>
 
-  <main class="products-grid">
-    <% @products.each do |product| %>
+  <main id="collection">
+    <section class="collection-intro section-shell">
+      <div>
+        <p class="eyebrow">THE COLLECTION</p>
+        <h2>素材がつくる、光と余韻。</h2>
+      </div>
+      <p>素材、サイズ、そして空間との調和。あなたのための一品をお選びください。</p>
+    </section>
 
-      <% size_class =
-        case product.size
-        when "大" then "pot-large"
-        when "中" then "pot-medium"
-        when "小" then "pot-small"
-        end
-      %>
-
-      <% image_file =
-        case product.material
-        when "金" then "pot_gold.png"
-        when "銀" then "pot_silver.png"
-        when "銅" then "pot_copper.png"
-        end
-      %>
-
-      <section class="product-card">
-
-        <div class="pot-image-wrap <%= size_class %>">
-          <%= image_tag image_file,
-                class: "pot-image",
-                alt: product.name %>
+    <section class="catalogue section-shell" aria-labelledby="catalogue-heading">
+      <h2 id="catalogue-heading" class="visually-hidden">商品一覧</h2>
+      <%= form_with url: products_path, method: :get, class: "catalogue-filter", data: { turbo: false } do |form| %>
+        <div class="filter-field filter-search">
+          <%= form.label :query, "商品を探す" %>
+          <%= form.search_field :query, value: @query, placeholder: "商品名・説明で検索", autocomplete: "off" %>
         </div>
+        <div class="filter-field">
+          <%= form.label :material, "素材" %>
+          <%= form.select :material, Product::MATERIALS, { include_blank: "すべて" }, selected: @material %>
+        </div>
+        <div class="filter-field">
+          <%= form.label :size, "サイズ" %>
+          <%= form.select :size, Product::SIZES, { include_blank: "すべて" }, selected: @size %>
+        </div>
+        <div class="filter-actions">
+          <%= form.submit "絞り込む", class: "button button-primary" %>
+          <%= link_to "リセット", products_path, class: "button button-quiet" %>
+        </div>
+      <% end %>
 
-        <h2><%= product.name %></h2>
+      <div class="catalogue-summary" aria-live="polite">
+        <p><strong><%= @products.count %></strong> 点のコレクション</p>
+        <p class="visit-count">訪問 <%= number_with_delimiter(@visit.count) %> 回</p>
+      </div>
 
-        <p class="product-meta">
-          素材：<%= product.material %> ／ サイズ：<%= product.size %>
-        </p>
-
-        <p class="price">
-          <%= number_with_delimiter(product.price / 10_000) %>万円
-        </p>
-
-        <p class="description">
-          <%= product.description %>
-        </p>
-
-        <%= link_to "商品を見る",
-                    product_path(product),
-                    class: "product-button" %>
-
-      </section>
-
-    <% end %>
+      <% if @products.any? %>
+        <div class="products-grid">
+          <% @products.each do |product| %>
+            <article class="product-card">
+              <div class="product-visual <%= product_size_class(product) %>">
+                <p class="product-material"><%= product.material %></p>
+                <%= image_tag product_image_filename(product), class: "pot-image", alt: product.name %>
+              </div>
+              <div class="product-card-body">
+                <p class="product-meta"><%= product.material %> ／ <%= product.size %></p>
+                <h3><%= product.name %></h3>
+                <p class="price"><%= display_price(product) %></p>
+                <p class="description"><%= product.description %></p>
+                <%= link_to product_path(product), class: "product-link", aria: { label: "#{product.name}の詳細を見る" } do %>
+                  詳細を見る <span aria-hidden="true">→</span>
+                <% end %>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="empty-state">
+          <p class="eyebrow">NO RESULTS</p>
+          <h3>条件に合う壺が見つかりませんでした。</h3>
+          <p>検索語や絞り込み条件を変更して、もう一度お試しください。</p>
+          <%= link_to "すべての商品を見る", products_path, class: "button button-primary" %>
+        </div>
+      <% end %>
+    </section>
   </main>
+
+  <footer class="site-footer section-shell">
+    <div>
+      <p class="wordmark">黄金堂</p>
+      <p>GOLDEN POT SHOP — Portfolio Edition</p>
+    </div>
+    <a href="https://github.com/gifted1984-del/golden-pot-shop" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+  </footer>
 </div>

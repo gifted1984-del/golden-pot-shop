@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get "products/index"
-    get "dashboard/index"
+    get "dashboard", to: "dashboard#index"
+    resources :products, only: :index
   end
   resources :products
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-    root "products#index"
+  root "products#index"
 end

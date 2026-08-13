@@ -1,61 +1,28 @@
-<% image_file =
-  case @product.material
-  when "金" then "pot_gold.png"
-  when "銀" then "pot_silver.png"
-  when "銅" then "pot_copper.png"
-  end
-%>
+<% content_for :title, "#{@product.name} | 黄金堂" %>
 
-<div class="product-show-page">
+<main class="product-show-page">
+  <nav class="detail-nav section-shell" aria-label="パンくず">
+    <%= link_to "← コレクションへ戻る", products_path, class: "back-link" %>
+    <span class="wordmark">黄金堂</span>
+  </nav>
 
-  <div class="product-show-card">
-
-    <% detail_size_class =
-  case @product.size
-  when "大" then "detail-pot-large"
-  when "中" then "detail-pot-medium"
-  when "小" then "detail-pot-small"
-  end
-%>
-
-<div class="product-show-image <%= detail_size_class %>">
-  <%= image_tag image_file,
-        class: "detail-pot-image",
-        alt: @product.name %>
-</div>
-
-    <div class="product-show-info">
-
-      <p class="detail-label">
-        <%= @product.material %>製
-      </p>
-
-      <h1><%= @product.name %></h1>
-
-      <p class="detail-meta">
-        素材：<%= @product.material %>
-        ／
-        サイズ：<%= @product.size %>
-      </p>
-
-      <p class="detail-price">
-        <%= number_with_delimiter(@product.price / 10_000) %>万円
-      </p>
-
-      <p class="detail-description">
-        <%= @product.description %>
-      </p>
-
-      <div class="detail-actions">
-
-        <%= link_to "商品一覧に戻る",
-                    products_path,
-                    class: "detail-back-button" %>
-
-      </div>
-
+  <article class="product-show-card section-shell">
+    <div class="product-show-image <%= product_size_class(@product, prefix: "detail-pot") %>">
+      <div class="detail-glow" aria-hidden="true"></div>
+      <%= image_tag product_image_filename(@product), class: "detail-pot-image", alt: @product.name %>
     </div>
 
-  </div>
-
-</div>
+    <div class="product-show-info">
+      <p class="eyebrow"><%= @product.material %> / <%= @product.size %></p>
+      <h1><%= @product.name %></h1>
+      <p class="detail-price"><%= display_price(@product) %></p>
+      <p class="detail-description"><%= @product.description %></p>
+      <dl class="product-specs">
+        <div><dt>素材</dt><dd><%= @product.material %></dd></div>
+        <div><dt>サイズ</dt><dd><%= @product.size %></dd></div>
+        <div><dt>状態</dt><dd>展示品</dd></div>
+      </dl>
+      <%= link_to "コレクションへ戻る", products_path, class: "button button-primary" %>
+    </div>
+  </article>
+</main>

@@ -1,4 +1,6 @@
 class Admin::DashboardController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @product_count = Product.count
     @visit_count = Visit.first&.count || 0

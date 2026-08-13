@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  material: MyString
-  size: MyString
-  price: 1
-  description: MyText
+  name: 金の大壺
+  material: 金
+  size: 大
+  price: 3000000
+  description: 圧倒的な存在感を誇る最高級モデル。
 
 two:
-  name: MyString
-  material: MyString
-  size: MyString
-  price: 1
-  description: MyText
+  name: 銀の小壺
+  material: 銀
+  size: 小
+  price: 380000
+  description: コンパクトながら存在感のある銀壺。
