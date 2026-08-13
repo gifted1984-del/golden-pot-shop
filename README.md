@@ -1,112 +1,33 @@
 # 黄金堂 - Golden Pot Store — Version 2.0.0
 
-> **現在の公開バージョン：V2.0.0**  
-> 最新版のソースコードは[`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience)ブランチで公開しています。  
-> 最新版の公開サイト：<https://golden-pot-shop-v2.onrender.com>
+> **現在の公開バージョン：V2.0.0**
+> 素材を巡るストーリー型ストア、管理者Console V2、購入デモを備えたポートフォリオです。
 
-Ruby on Railsで制作した、壺を販売する架空のECサイト風ポートフォリオです。
+## Version 2 公開URL
 
+- [ストアフロント](https://golden-pot-shop-v2.onrender.com)
+- [管理者アプリ](https://golden-pot-shop-v2.onrender.com/admin/dashboard)（認証情報の設定後に利用可能）
 
+## ソースコード
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-金・銀・銅の壺を、大・中・小のサイズ別に表示しています。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## スクリーンショット
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![黄金堂トップページ](docs/images/golden-pot-shop.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 公開サイト
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://golden-pot-shop-1.onrender.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Version 2 — v2/experience ブランチ](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience)
+- [Version 1 — main ブランチ](https://github.com/gifted1984-del/golden-pot-shop/tree/main)
 
 ## 主な機能
 
+- 金・銀・銅 × 大・中・小のコレクション表示
+- カタログ検索・素材・サイズによる絞り込み
+- クレジットカード入力を含む購入デモ（実決済は行いません）
+- 管理者用Console V2
+- Renderでの無料公開
 
-  
+## 使用技術
+
+- Ruby 3.3.6 / Ruby on Rails 8.1.3
+- HTML / ERB / CSS / SQLite
+- Docker / Render / GitHub
+
+## 注意事項
+
+このサイトはポートフォリオ用の架空のショップです。実際の商品販売・購入は行っていません。
+ 
