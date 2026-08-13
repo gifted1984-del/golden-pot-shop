@@ -8,9 +8,11 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 ![黄金堂トップページ](docs/images/golden-pot-shop.png)
 
-## 公開サイト
+## Version 2
 
-https://golden-pot-shop-1.onrender.com
+Version 1を`main`として残し、Version 2は`v2/experience`ブランチで開発しています。
+
+Version 2には、素材を巡るストーリー型ホームページ、カタログ絞り込み、管理者用Console V2、購入体験を示す決済デモを含みます。
 
 ## 主な機能
 
@@ -22,7 +24,9 @@ https://golden-pot-shop-1.onrender.com
 - アクセスカウンター
 - スマートフォン対応
 - 管理用ページ
-- RenderによるWeb公開
+- 管理者認証（`/admin/dashboard`）
+- クレジットカード入力を含む決済**デモ**（実決済・保存・購入は一切なし）
+- Render Blueprintによるデプロイ準備
 
 ## 使用技術
 
@@ -56,3 +60,7 @@ GitHubへのコード管理、Renderへのデプロイまで、一連のWebア�
 
 このサイトはポートフォリオ用に制作した架空のWebサイトです。
 実際の商品販売・購入は行っていません。
+
+決済デモではテスト番号 `4242 4242 4242 4242` だけを利用します。実在するカード情報は入力しないでください。
+
+デプロイ手順は[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)を確認してください。

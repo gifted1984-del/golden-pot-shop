@@ -1,63 +1,21 @@
-<div class="admin-products-page">
+<% content_for :title, "商品管理 V2 | 黄金堂" %>
 
-  <header class="admin-products-header">
-    <div>
-      <p class="admin-subtitle">GOLDEN POT STORE</p>
-      <h1>商品管理</h1>
-    </div>
+<div class="admin-v2-shell">
+  <aside class="admin-sidebar">
+    <%= link_to "黄金堂", admin_dashboard_path, class: "wordmark" %><p class="admin-version">ADMIN CONSOLE / V2</p>
+    <nav aria-label="管理メニュー"><%= link_to admin_dashboard_path, class: "admin-nav-link" do %><span>◈</span> 概要<% end %><%= link_to admin_products_path, class: "admin-nav-link is-active" do %><span>□</span> 商品管理<% end %><%= link_to new_admin_product_path, class: "admin-nav-link" do %><span>＋</span> 商品を追加<% end %></nav>
+    <%= link_to products_path, class: "admin-store-link" do %>ストアを表示 <span aria-hidden="true">↗</span><% end %>
+  </aside>
 
-    <div class="admin-products-actions">
-      <%= link_to "ダッシュボードへ戻る",
-                  admin_dashboard_path,
-                  class: "admin-secondary-button" %>
-
-      <%= link_to "商品を追加",
-                  new_product_path,
-                  class: "admin-primary-button" %>
-    </div>
-  </header>
-
-  <section class="admin-products-table-wrap">
-
-    <table class="admin-products-table">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>素材</th>
-          <th>サイズ</th>
-          <th>価格</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-
-      <tbody>
+  <main class="admin-v2-main">
+    <header class="admin-v2-header"><div><p class="eyebrow">CATALOGUE</p><h1>商品管理</h1><p class="admin-header-note"><%= @products.count %> 点のコレクションを管理中</p></div><%= link_to "＋ 商品を追加", new_admin_product_path, class: "button button-primary" %></header>
+    <section class="admin-v2-panel admin-table-panel">
+      <div class="admin-table-toolbar"><p>PRODUCTS</p><span>公開中の登録商品</span></div>
+      <div class="admin-v2-table-wrap"><table class="admin-v2-table"><thead><tr><th>商品</th><th>素材</th><th>サイズ</th><th>価格</th><th><span class="visually-hidden">操作</span></th></tr></thead><tbody>
         <% @products.each do |product| %>
-          <tr>
-            <td><%= product.name %></td>
-            <td><%= product.material %></td>
-            <td><%= product.size %></td>
-            <td><%= number_with_delimiter(product.price / 10_000) %>万円</td>
-
-            <td class="admin-product-buttons">
-              <%= link_to "表示",
-                          product_path(product),
-                          class: "admin-small-button" %>
-
-              <%= link_to "編集",
-                          edit_product_path(product),
-                          class: "admin-small-button" %>
-
-              <%= button_to "削除",
-                            product_path(product),
-                            method: :delete,
-                            data: { turbo_confirm: "本当に削除しますか？" },
-                            class: "admin-delete-button" %>
-            </td>
-          </tr>
+          <tr><td><div class="admin-product-name"><%= image_tag product_image_filename(product), alt: "", aria: { hidden: true } %><div><strong><%= product.name %></strong><span><%= truncate(product.description, length: 34) %></span></div></div></td><td><span class="admin-material-tag material-<%= product.material %>"><%= product.material %></span></td><td><%= product.size %></td><td><%= display_price(product) %></td><td><div class="admin-row-actions"><%= link_to "公開ページ", product_path(product), class: "text-link" %><%= link_to "編集", edit_admin_product_path(product), class: "text-link" %><%= button_to "削除", admin_product_path(product), method: :delete, data: { turbo_confirm: "#{product.name}を削除しますか？" }, class: "admin-delete-link" %></div></td></tr>
         <% end %>
-      </tbody>
-    </table>
-
-  </section>
-
+      </tbody></table></div>
+    </section>
+  </main>
 </div>

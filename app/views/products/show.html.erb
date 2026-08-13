@@ -22,7 +22,11 @@
         <div><dt>サイズ</dt><dd><%= @product.size %></dd></div>
         <div><dt>状態</dt><dd>展示品</dd></div>
       </dl>
-      <%= link_to "コレクションへ戻る", products_path, class: "button button-primary" %>
+      <%= link_to checkout_path(product_id: @product.id), class: "button button-primary" do %>
+        デモ購入フローへ <span aria-hidden="true">→</span>
+      <% end %>
+      <p class="demo-inline-note">これはポートフォリオ用のデモです。実際の購入・請求は行われません。</p>
+      <%= link_to "コレクションへ戻る", products_path, class: "button button-quiet" %>
     </div>
   </article>
 </main>

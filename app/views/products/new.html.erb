@@ -1,19 +1,2 @@
-<div class="admin-form-page">
-
-  <div class="admin-form-card">
-
-    <p class="admin-subtitle">GOLDEN POT STORE</p>
-
-    <h1>商品を追加</h1>
-
-    <%= render "form", product: @product %>
-
-    <div class="admin-form-links">
-      <%= link_to "商品管理へ戻る",
-                  admin_products_path,
-                  class: "admin-secondary-button" %>
-    </div>
-
-  </div>
-
-</div>
+<% content_for :title, "商品を追加 | 黄金堂 管理" %>
+<div class="admin-v2-shell"><aside class="admin-sidebar"><%= link_to "黄金堂", admin_dashboard_path, class: "wordmark" %><p class="admin-version">ADMIN CONSOLE / V2</p><nav aria-label="管理メニュー"><%= link_to admin_dashboard_path, class: "admin-nav-link" do %><span>◈</span> 概要<% end %><%= link_to admin_products_path, class: "admin-nav-link" do %><span>□</span> 商品管理<% end %><%= link_to new_admin_product_path, class: "admin-nav-link is-active" do %><span>＋</span> 商品を追加<% end %></nav></aside><main class="admin-v2-main"><header class="admin-v2-header"><div><p class="eyebrow">NEW PRODUCT</p><h1>商品を追加</h1></div></header><section class="admin-v2-panel admin-form-panel"><%= render "form", product: @product %></section></main></div>

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: golden-pot-shop-v2
+    runtime: docker
+    plan: starter
+    region: singapore
+    healthCheckPath: /up
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: RAILS_LOG_TO_STDOUT
+        value: "true"
+      - key: SOLID_QUEUE_IN_PUMA
+        value: "true"
+    disk:
+      name: golden-pot-shop-v2-storage
+      mountPath: /rails/storage
+      sizeGB: 1

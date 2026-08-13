@@ -1,0 +1,74 @@
+<% content_for :title, "デモ購入フロー | 黄金堂" %>
+
+<main class="checkout-page">
+  <nav class="detail-nav section-shell" aria-label="パンくず">
+    <%= link_to "← 商品詳細に戻る", product_path(@product), class: "back-link" %>
+    <span class="wordmark">黄金堂</span>
+  </nav>
+
+  <section class="checkout-shell section-shell">
+    <div class="demo-banner" role="alert">
+      <span aria-hidden="true">✦</span>
+      <div><strong>これは決済デモです。</strong><br>実際の購入、請求、カード情報の保存は一切行われません。</div>
+    </div>
+
+    <div class="checkout-grid">
+      <aside class="checkout-product">
+        <p class="eyebrow">DEMO ORDER</p>
+        <div class="checkout-product-image">
+          <%= image_tag product_image_filename(@product), alt: @product.name %>
+        </div>
+        <p class="product-meta"><%= @product.material %> ／ <%= @product.size %></p>
+        <h1><%= @product.name %></h1>
+        <p class="checkout-price"><%= display_price(@product) %></p>
+        <p>この画面は、ECサイトにおける入力体験を示すポートフォリオ用のサンプルです。</p>
+      </aside>
+
+      <section class="payment-form-card" aria-labelledby="payment-heading">
+        <p class="eyebrow">STEP 2 OF 2</p>
+        <h2 id="payment-heading">カード情報を入力</h2>
+        <p class="payment-lede">下のテスト情報だけを使ってください。実在するクレジットカード情報は入力しないでください。</p>
+
+        <% if @errors&.any? %>
+          <div class="form-errors" role="alert">
+            <h3>入力内容を確認してください</h3>
+            <ul><% @errors.each do |error| %><li><%= error %></li><% end %></ul>
+          </div>
+        <% end %>
+
+        <div class="test-card-hint">
+          <span>TEST CARD</span>
+          <strong>4242 4242 4242 4242</strong>
+          <small>有効期限: 任意の未来月 / 3桁の番号</small>
+        </div>
+
+        <%= form_with url: checkout_preview_path, scope: :checkout, class: "payment-form", data: { turbo: false } do |form| %>
+          <%= form.hidden_field :product_id, value: @product.id %>
+          <div class="form-group">
+            <%= form.label :cardholder_name, "カード名義（デモ）" %>
+            <%= form.text_field :cardholder_name, value: @checkout&.[](:cardholder_name), autocomplete: "off", placeholder: "GOLDEN POT DEMO", required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :card_number, "カード番号（テスト番号のみ）" %>
+            <%= form.text_field :card_number, value: @checkout&.[](:card_number), inputmode: "numeric", autocomplete: "off", placeholder: "4242 4242 4242 4242", pattern: "[0-9 ]{16,19}", required: true %>
+          </div>
+          <div class="payment-form-row">
+            <div class="form-group">
+              <%= form.label :expiry_date, "有効期限" %>
+              <%= form.text_field :expiry_date, value: @checkout&.[](:expiry_date), autocomplete: "off", placeholder: "12 / 30", pattern: "(0[1-9]|1[0-2])\\s*/\\s*\\d{2}", required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :cvc, "セキュリティコード" %>
+              <%= form.password_field :cvc, inputmode: "numeric", autocomplete: "off", placeholder: "123", pattern: "[0-9]{3}", required: true %>
+            </div>
+          </div>
+          <label class="demo-agreement">
+            <%= form.check_box :agreement, { checked: @checkout&.[](:agreement) == "1" }, "1", "0" %>
+            <span>これはデモ画面で、購入・請求・カード情報保存が行われないことを理解しました。</span>
+          </label>
+          <%= form.submit "デモ注文を確認する（購入はされません）", class: "button button-primary payment-submit" %>
+        <% end %>
+      </section>
+    </div>
+  </section>
+</main>

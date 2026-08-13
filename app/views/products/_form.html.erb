@@ -1,45 +1,8 @@
-<%= form_with(model: product, class: "admin-product-form") do |form| %>
-
-  <% if product.errors.any? %>
-    <div class="form-errors">
-      <h2>入力内容を確認してください</h2>
-
-      <ul>
-        <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= form.label :name, "商品名" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :material, "素材" %>
-    <%= form.select :material, Product::MATERIALS, { prompt: "選択してください" } %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :size, "サイズ" %>
-    <%= form.select :size, Product::SIZES, { prompt: "選択してください" } %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :price, "価格（円）" %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description, "商品説明" %>
-    <%= form.text_area :description, rows: 5 %>
-  </div>
-
-  <div class="form-actions">
-    <%= form.submit product.persisted? ? "商品を更新" : "商品を登録",
-                    class: "admin-primary-button" %>
-  </div>
-
+<%= form_with(model: [:admin, product], class: "admin-v2-form") do |form| %>
+  <% if product.errors.any? %><div class="form-errors"><h2>入力内容を確認してください</h2><ul><% product.errors.each do |error| %><li><%= error.full_message %></li><% end %></ul></div><% end %>
+  <div class="form-group"><%= form.label :name, "商品名" %><%= form.text_field :name, placeholder: "例：金の大壺" %></div>
+  <div class="admin-form-split"><div class="form-group"><%= form.label :material, "素材" %><%= form.select :material, Product::MATERIALS, { prompt: "選択してください" } %></div><div class="form-group"><%= form.label :size, "サイズ" %><%= form.select :size, Product::SIZES, { prompt: "選択してください" } %></div></div>
+  <div class="form-group"><%= form.label :price, "価格（円）" %><%= form.number_field :price, min: 1, placeholder: "例：3000000" %></div>
+  <div class="form-group"><%= form.label :description, "商品説明" %><%= form.text_area :description, rows: 5, placeholder: "商品の特徴や空間への提案を記入します。" %></div>
+  <div class="admin-form-actions"><%= form.submit product.persisted? ? "変更を保存する" : "商品を登録する", class: "button button-primary" %><%= link_to "キャンセル", admin_products_path, class: "button button-quiet" %></div>
 <% end %>

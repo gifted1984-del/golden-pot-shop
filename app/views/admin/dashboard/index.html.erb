@@ -1,75 +1,47 @@
-<div class="admin-dashboard">
+<% content_for :title, "管理ダッシュボード V2 | 黄金堂" %>
 
-  <header class="admin-header">
-    <div>
-      <p class="admin-subtitle">GOLDEN POT STORE</p>
-      <h1>管理ダッシュボード</h1>
-    </div>
+<div class="admin-v2-shell">
+  <aside class="admin-sidebar">
+    <%= link_to "黄金堂", admin_dashboard_path, class: "wordmark" %>
+    <p class="admin-version">ADMIN CONSOLE / V2</p>
+    <nav aria-label="管理メニュー">
+      <%= link_to admin_dashboard_path, class: "admin-nav-link is-active" do %><span>◈</span> 概要<% end %>
+      <%= link_to admin_products_path, class: "admin-nav-link" do %><span>□</span> 商品管理<% end %>
+      <%= link_to new_admin_product_path, class: "admin-nav-link" do %><span>＋</span> 商品を追加<% end %>
+    </nav>
+    <%= link_to products_path, class: "admin-store-link" do %>ストアを表示 <span aria-hidden="true">↗</span><% end %>
+  </aside>
 
-    <%= link_to "ショップを見る",
-                products_path,
-                class: "admin-shop-link" %>
-  </header>
+  <main class="admin-v2-main">
+    <header class="admin-v2-header">
+      <div><p class="eyebrow">STORE OVERVIEW</p><h1>今日の黄金堂</h1></div>
+      <%= link_to "商品を追加", new_admin_product_path, class: "button button-primary" %>
+    </header>
 
-  <section class="admin-summary">
+    <section class="admin-metrics" aria-label="店舗指標">
+      <article><p>ALL VISITS</p><strong><%= number_with_delimiter(@visit_count) %></strong><span>トップページの表示回数</span></article>
+      <article><p>COLLECTION</p><strong><%= @product_count %></strong><span>登録済みの商品</span></article>
+      <article><p>GOLD</p><strong><%= @gold_count %></strong><span>金のコレクション</span></article>
+      <article><p>SILVER</p><strong><%= @silver_count %></strong><span>銀のコレクション</span></article>
+      <article><p>COPPER</p><strong><%= @copper_count %></strong><span>銅のコレクション</span></article>
+    </section>
 
-    <div class="summary-card">
-      <p class="summary-label">総アクセス数</p>
-      <p class="summary-number"><%= @visit_count %></p>
-    </div>
+    <section class="admin-v2-panels">
+      <article class="admin-v2-panel material-balance">
+        <div class="panel-heading"><div><p class="eyebrow">INVENTORY MIX</p><h2>素材ごとの構成</h2></div><%= link_to "商品管理へ", admin_products_path, class: "text-link" %></div>
+        <% total = [@product_count, 1].max %>
+        <div class="material-bars">
+          <% [["金", @gold_count, "gold"], ["銀", @silver_count, "silver"], ["銅", @copper_count, "copper"]].each do |label, count, color| %>
+            <div class="material-bar"><div><span><%= label %></span><strong><%= count %> 点</strong></div><div class="bar-track"><i class="<%= color %>" style="width: <%= (count.to_f / total * 100).round %>%"></i></div></div>
+          <% end %>
+        </div>
+      </article>
 
-    <div class="summary-card">
-      <p class="summary-label">商品総数</p>
-      <p class="summary-number"><%= @product_count %></p>
-    </div>
-
-    <div class="summary-card">
-      <p class="summary-label">金の商品</p>
-      <p class="summary-number"><%= @gold_count %></p>
-    </div>
-
-    <div class="summary-card">
-      <p class="summary-label">銀の商品</p>
-      <p class="summary-number"><%= @silver_count %></p>
-    </div>
-
-    <div class="summary-card">
-      <p class="summary-label">銅の商品</p>
-      <p class="summary-number"><%= @copper_count %></p>
-    </div>
-
-  </section>
-
-  <section class="admin-menu">
-
-    <h2>管理メニュー</h2>
-
-    <div class="admin-menu-grid">
-
-     <%= link_to admin_products_path,
-            class: "admin-menu-card" do %>
-
-        <h3>商品一覧</h3>
-
-        <p>
-          登録されている商品を確認します。
-        </p>
-
-      <% end %>
-
-      <%= link_to new_product_path,
-                  class: "admin-menu-card" do %>
-
-        <h3>商品を追加</h3>
-
-        <p>
-          新しい商品を登録します。
-        </p>
-
-      <% end %>
-
-    </div>
-
-  </section>
-
+      <article class="admin-v2-panel admin-next-step">
+        <p class="eyebrow">NEXT ACTION</p><h2>コレクションを
+          <br>磨き上げる。</h2><p>商品情報、素材、サイズ、説明文を更新し、ストアの見せ方を整えます。</p>
+        <%= link_to "商品を管理する →", admin_products_path, class: "button button-quiet" %>
+      </article>
+    </section>
+  </main>
 </div>

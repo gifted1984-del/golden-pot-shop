@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
     get "dashboard", to: "dashboard#index"
-    resources :products, only: :index
+    resources :products, except: :show
   end
-  resources :products
+  resources :products, only: %i[index show]
+  get "checkout", to: "checkout#new"
+  post "checkout/preview", to: "checkout#preview", as: :checkout_preview
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

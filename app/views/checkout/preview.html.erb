@@ -1,0 +1,27 @@
+<% content_for :title, "デモ注文の確認 | 黄金堂" %>
+
+<main class="checkout-page">
+  <nav class="detail-nav section-shell" aria-label="パンくず">
+    <%= link_to "← コレクションへ戻る", products_path, class: "back-link" %>
+    <span class="wordmark">黄金堂</span>
+  </nav>
+
+  <section class="demo-complete section-shell">
+    <p class="eyebrow">DEMO COMPLETE</p>
+    <div class="complete-mark" aria-hidden="true">✓</div>
+    <h1>購入は完了していません。</h1>
+    <p class="complete-lede">これはポートフォリオ用の決済体験デモです。請求、注文作成、カード情報の保存、外部決済サービスへの送信は行われていません。</p>
+
+    <dl class="demo-receipt">
+      <div><dt>商品</dt><dd><%= @product.name %></dd></div>
+      <div><dt>表示価格</dt><dd><%= display_price(@product) %></dd></div>
+      <div><dt>カード表示</dt><dd>•••• •••• •••• <%= @last4 %></dd></div>
+      <div><dt>処理結果</dt><dd>デモ表示のみ（決済なし）</dd></div>
+    </dl>
+
+    <div class="complete-actions">
+      <%= link_to "コレクションへ戻る", products_path, class: "button button-primary" %>
+      <%= link_to "この商品の詳細を見る", product_path(@product), class: "button button-quiet" %>
+    </div>
+  </section>
+</main>
