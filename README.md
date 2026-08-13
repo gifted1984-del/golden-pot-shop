@@ -1,4 +1,8 @@
-# 黄金堂 - Golden Pot Store
+# 黄金堂 - Golden Pot Store — Version 2.0.0
+
+> **現在の公開バージョン：V2.0.0**  
+> 体験型ストアフロント・管理者Console V2・購入デモを含む最新版です。  
+> 公開サイト：<https://golden-pot-shop-v2.onrender.com>
 
 Ruby on Railsで制作した、壺を販売する架空のECサイト風ポートフォリオです。
 
@@ -8,11 +12,14 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 ![黄金堂トップページ](docs/images/golden-pot-shop.png)
 
-## Version 2
+## バージョン情報
 
-Version 1を`main`として残し、Version 2は`v2/experience`ブランチで開発しています。
+| バージョン | ブランチ | 状態 |
+| --- | --- | --- |
+| **V2.0.0（現在）** | [`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience) | 公開中 |
+| V1 | `main` | 旧バージョンとして保持 |
 
-Version 2には、素材を巡るストーリー型ホームページ、カタログ絞り込み、管理者用Console V2、購入体験を示す決済デモを含みます。
+V2.0.0には、素材を巡るストーリー型ホームページ、カタログ絞り込み、管理者用Console V2、購入体験を示す決済デモを含みます。
 
 ## 主な機能
 
@@ -64,3 +71,4 @@ GitHubへのコード管理、Renderへのデプロイまで、一連のWebア�
 決済デモではテスト番号 `4242 4242 4242 4242` だけを利用します。実在するカード情報は入力しないでください。
 
 デプロイ手順は[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)を確認してください。
+ 
