@@ -4,17 +4,19 @@
 > 最新版のソースコードは[`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience)ブランチで公開しています。  
 > 最新版の公開サイト：<https://golden-pot-shop-v2.onrender.com>
 
-# 黄金堂 - Golden Pot Store — Version 2.0.0
-
-
-> **現在の公開バージョン：V2.0.0**  
-> 最新版のソースコードは[`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience)ブランチで公開しています。  
-> 最新版の公開サイト：<https://golden-pot-shop-v2.onrender.com>
-
-
-
-
 Ruby on Railsで制作した、壺を販売する架空のECサイト風ポートフォリオです。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -24,7 +26,31 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## スクリーンショット
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -34,7 +60,31 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## 公開サイト
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,9 +94,19 @@ https://golden-pot-shop-1.onrender.com
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## 主な機能
 
 
-
-
-- 商品一覧表示 
+  
