@@ -2,7 +2,8 @@
 
 > **現在の公開バージョン：V2.0.0**  
 > 体験型ストアフロント・管理者Console V2・購入デモを含む最新版です。  
-> 公開サイト：<https://golden-pot-shop-v2.onrender.com>
+> 公開サイト：<https://golden-pot-shop-v2.onrender.com>  
+> 管理者Console V2：<https://golden-pot-shop-v2.onrender.com/admin/dashboard>
 
 Ruby on Railsで制作した、壺を販売する架空のECサイト風ポートフォリオです。
 
@@ -14,12 +15,14 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 ## バージョン情報
 
-| バージョン | ブランチ | 状態 |
-| --- | --- | --- |
-| **V2.0.0（現在）** | [`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience) | 公開中 |
-| V1 | `main` | 旧バージョンとして保持 |
+| バージョン | ブランチ | ホームページ | 管理アプリ | 状態 |
+| --- | --- | --- | --- | --- |
+| **V2.0.0（現在）** | [`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience) | [公開サイト](https://golden-pot-shop-v2.onrender.com) | [管理者Console V2](https://golden-pot-shop-v2.onrender.com/admin/dashboard) | 公開中 |
+| **V1（初期版）** | [`main`](https://github.com/gifted1984-del/golden-pot-shop/tree/main) | [初期版ホームページ](https://golden-pot-shop-1.onrender.com) | [初期版管理アプリ](https://golden-pot-shop-1.onrender.com/admin/dashboard) | 比較用に公開を維持 |
 
 V2.0.0には、素材を巡るストーリー型ホームページ、カタログ絞り込み、管理者用Console V2、購入体験を示す決済デモを含みます。
+
+初期版とV2のホームページ・管理アプリは、上表のURLから比較できます。V2の管理アプリは環境変数で保護された認証画面を表示します。
 
 ## 主な機能
 
@@ -55,7 +58,7 @@ GitHubへのコード管理、Renderへのデプロイまで、一連のWebア�
 
 ## 工夫したポイント
 
-商品一覧では、素材によって金・銀・銅の画像を切り替えています。
+商品一覧では、素材によって金・銀・銅の商品画像を切り替えています。
 
 また、商品の「大・中・小」に合わせて壺の表示サイズも変更し、
 商品の違いが視覚的に分かるようにしました。
@@ -71,4 +74,3 @@ GitHubへのコード管理、Renderへのデプロイまで、一連のWebア�
 決済デモではテスト番号 `4242 4242 4242 4242` だけを利用します。実在するカード情報は入力しないでください。
 
 デプロイ手順は[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)を確認してください。
- 
