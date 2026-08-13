@@ -4,7 +4,10 @@
   <header class="hero" id="top">
     <nav class="site-nav" aria-label="メインナビゲーション">
       <%= link_to "黄金堂", products_path, class: "wordmark", aria: { label: "黄金堂 ホーム" } %>
-      <a href="#collection" class="nav-link">コレクション</a>
+      <div class="nav-links">
+        <a href="#materials" class="nav-link">素材を知る</a>
+        <a href="#catalogue" class="nav-link">コレクション</a>
+      </div>
     </nav>
 
     <div class="hero-content">
@@ -13,7 +16,7 @@
       <p class="hero-kicker">GOLDEN POT SHOP</p>
       <p class="hero-copy">金、銀、銅。静かな存在感を宿す、
         <br class="desktop-only">一点ものの壺を集めました。</p>
-      <a href="#collection" class="button button-primary">コレクションを見る <span aria-hidden="true">↓</span></a>
+      <a href="#materials" class="button button-primary">光をたどる <span aria-hidden="true">↓</span></a>
     </div>
 
     <div class="hero-object" aria-hidden="true">
@@ -24,7 +27,13 @@
     <p class="hero-footnote">架空のポートフォリオサイトです。商品の購入はできません。</p>
   </header>
 
-  <main id="collection">
+  <main>
+    <section class="discovery-rail" aria-label="黄金堂の素材">
+      <a href="#gold"><span>01</span> 金 <i aria-hidden="true">↘</i></a>
+      <a href="#silver"><span>02</span> 銀 <i aria-hidden="true">↘</i></a>
+      <a href="#copper"><span>03</span> 銅 <i aria-hidden="true">↘</i></a>
+    </section>
+
     <section class="collection-intro section-shell">
       <div>
         <p class="eyebrow">THE COLLECTION</p>
@@ -33,7 +42,55 @@
       <p>素材、サイズ、そして空間との調和。あなたのための一品をお選びください。</p>
     </section>
 
-    <section class="catalogue section-shell" aria-labelledby="catalogue-heading">
+    <section class="material-journey section-shell" id="materials" aria-labelledby="materials-heading">
+      <div class="journey-heading">
+        <p class="eyebrow">CHOOSE YOUR RADIANCE</p>
+        <h2 id="materials-heading">惹かれる光から、
+          <br>一品を見つける。</h2>
+        <p>同じ形でも、素材が変われば空間に残す印象は変わります。気になる光をひとつ選んで、コレクションを巡ってください。</p>
+      </div>
+
+      <div class="material-stories">
+        <article class="material-story story-gold" id="gold">
+          <div class="story-copy">
+            <p class="story-number">01 / GOLD</p>
+            <h3>金</h3>
+            <p>あたたかな輝きと、圧倒的な存在感。</p>
+            <%= link_to products_path(material: "金", anchor: "catalogue"), class: "story-link" do %>金の壺を見る <span aria-hidden="true">→</span><% end %>
+          </div>
+          <%= image_tag "pot_gold.png", class: "story-pot", alt: "金の壺" %>
+        </article>
+
+        <article class="material-story story-silver" id="silver">
+          <div class="story-copy">
+            <p class="story-number">02 / SILVER</p>
+            <h3>銀</h3>
+            <p>静けさのなかで、凛とした輪郭を描く。</p>
+            <%= link_to products_path(material: "銀", anchor: "catalogue"), class: "story-link" do %>銀の壺を見る <span aria-hidden="true">→</span><% end %>
+          </div>
+          <%= image_tag "pot_silver.png", class: "story-pot", alt: "銀の壺" %>
+        </article>
+
+        <article class="material-story story-copper" id="copper">
+          <div class="story-copy">
+            <p class="story-number">03 / COPPER</p>
+            <h3>銅</h3>
+            <p>時とともに深まる、豊かで穏やかな表情。</p>
+            <%= link_to products_path(material: "銅", anchor: "catalogue"), class: "story-link" do %>銅の壺を見る <span aria-hidden="true">→</span><% end %>
+          </div>
+          <%= image_tag "pot_copper.png", class: "story-pot", alt: "銅の壺" %>
+        </article>
+      </div>
+    </section>
+
+    <section class="collection-prompt section-shell" aria-label="コレクションへの案内">
+      <p class="eyebrow">YOUR NEXT DISCOVERY</p>
+      <p>素材、サイズ、言葉から。
+        <span>気になる一品へ。</span></p>
+      <a href="#catalogue" class="round-cta" aria-label="商品一覧へ進む"><span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="catalogue section-shell" id="catalogue" aria-labelledby="catalogue-heading">
       <h2 id="catalogue-heading" class="visually-hidden">商品一覧</h2>
       <%= form_with url: products_path, method: :get, class: "catalogue-filter", data: { turbo: false } do |form| %>
         <div class="filter-field filter-search">
