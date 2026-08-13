@@ -234,13 +234,25 @@ button, input, select, textarea { font: inherit; }
 .product-card { background: rgba(17, 17, 16, 0.9); border: 1px solid rgba(215, 185, 103, 0.12); box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; min-width: 0; transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease; }
 .product-card:hover { border-color: rgba(215, 185, 103, 0.72); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.42), 0 0 42px rgba(202, 161, 61, 0.13); transform: translateY(-5px); }
 .product-visual { align-items: center; background: radial-gradient(circle at 50% 48%, #4b3c1b 0, #262218 31%, #13120f 59%, #090908 100%); display: flex; height: 320px; isolation: isolate; justify-content: center; overflow: hidden; position: relative; }
-.product-visual::before { animation: halo-pulse 4s ease-in-out infinite alternate; border: 1px solid rgba(239, 203, 102, 0.42); border-radius: 50%; box-shadow: 0 0 30px rgba(222, 172, 49, 0.18), inset 0 0 28px rgba(239, 203, 102, 0.12); content: ""; height: 62%; position: absolute; width: 62%; }
-.product-visual::after { animation: spin 16s linear infinite; border: 1px dashed rgba(249, 221, 143, 0.24); border-radius: 50%; content: ""; height: 80%; position: absolute; width: 80%; }
+.product-visual::before, .product-visual::after { content: ""; left: 50%; position: absolute; top: 50%; }
+.product-visual::before { border: 1px solid rgba(239, 203, 102, 0.42); border-radius: 50%; box-shadow: 0 0 30px rgba(222, 172, 49, 0.18), inset 0 0 28px rgba(239, 203, 102, 0.12); height: 62%; width: 62%; }
+.product-visual::after { border: 1px dashed rgba(249, 221, 143, 0.24); border-radius: 50%; height: 80%; width: 80%; }
+.pot-small::before { animation: halo-small 3.8s ease-in-out infinite; height: 42%; width: 42%; }
+.pot-small::after { animation: orbit-small 11s linear infinite; height: 59%; width: 59%; }
+.pot-medium::before { animation: halo-medium 5.2s ease-in-out infinite; height: 64%; width: 64%; }
+.pot-medium::after { animation: orbit-medium 17s linear infinite; height: 82%; width: 82%; }
+.pot-large::before { animation: halo-large 7.4s ease-in-out infinite; height: 88%; width: 88%; }
+.pot-large::after { animation: orbit-large 25s linear infinite; height: 112%; width: 112%; }
 .material-chip { align-items: center; background: rgba(13, 12, 10, 0.82); border: 1px solid rgba(235, 201, 104, 0.5); color: var(--gold-light); display: inline-flex; font-size: 0.68rem; font-weight: 700; gap: 5px; letter-spacing: 0.16em; margin: 0; padding: 6px 9px; position: absolute; right: 14px; top: 14px; z-index: 3; }
 .material-chip span { color: var(--gold); }
+.size-orbit-label { bottom: 13px; color: rgba(255, 227, 143, 0.68); font-family: var(--serif); font-size: 0.66rem; left: 14px; letter-spacing: 0.18em; position: absolute; z-index: 3; }
 .pot-image { filter: drop-shadow(0 18px 20px rgba(0, 0, 0, 0.52)); max-height: 80%; max-width: 76%; object-fit: contain; position: relative; transition: transform 260ms ease; z-index: 2; }
-@keyframes halo-pulse { to { box-shadow: 0 0 44px rgba(222, 172, 49, 0.35), inset 0 0 36px rgba(239, 203, 102, 0.2); transform: scale(1.08); } }
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes halo-small { 0%, 100% { transform: translate(-50%, -50%) scale(.84); } 50% { transform: translate(-55%, -46%) scale(1.12); } }
+@keyframes halo-medium { 0%, 100% { transform: translate(-50%, -50%) scale(.94); } 50% { transform: translate(-47%, -53%) scale(1.07); } }
+@keyframes halo-large { 0%, 100% { transform: translate(-50%, -50%) scale(.92); } 50% { transform: translate(-53%, -47%) scale(1.1); } }
+@keyframes orbit-small { from { transform: translate(-50%, -50%) rotate(0deg) scale(.92); } to { transform: translate(-50%, -50%) rotate(360deg) scale(1.04); } }
+@keyframes orbit-medium { from { transform: translate(-50%, -50%) rotate(0deg) scale(.96); } to { transform: translate(-50%, -50%) rotate(360deg) scale(1.05); } }
+@keyframes orbit-large { from { transform: translate(-50%, -50%) rotate(0deg) scale(.92); } to { transform: translate(-50%, -50%) rotate(360deg) scale(1.08); } }
 .product-card:hover .pot-image { transform: scale(1.04); }
 .pot-large .pot-image { max-height: 91%; max-width: 78%; }
 .pot-small .pot-image { max-height: 59%; max-width: 56%; }

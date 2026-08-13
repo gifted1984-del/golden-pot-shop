@@ -122,6 +122,7 @@
             <article class="product-card">
               <div class="product-visual <%= product_size_class(product) %>">
                 <p class="material-chip"><span aria-hidden="true">✦</span> <%= product.material %></p>
+                <span class="size-orbit-label" aria-hidden="true"><%= product.size %> SIZE</span>
                 <%= image_tag product_image_filename(product), class: "pot-image", alt: product.name %>
               </div>
               <div class="product-card-body">
