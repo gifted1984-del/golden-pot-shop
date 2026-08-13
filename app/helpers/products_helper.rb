@@ -1,10 +1,10 @@
 module ProductsHelper
   def product_image_filename(product)
     {
-      "金" => "pot_gold.png",
-      "銀" => "pot_silver.png",
-      "銅" => "pot_copper.png"
-    }.fetch(product.material, "pot_gold.png")
+      "金" => "vase-gold-studio-v2.png",
+      "銀" => "vase-silver-studio-v2.png",
+      "銅" => "vase-copper-studio-v2.png"
+    }.fetch(product.material, "vase-gold-studio-v2.png")
   end
 
   def product_size_class(product, prefix: "pot")
