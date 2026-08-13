@@ -1,18 +1,30 @@
-# 黄金堂 - Golden Pot Store
+# 黄金堂 - Golden Pot Store — Version 2.0.0
+
+> **現在の公開バージョン：V2.0.0**  
+> 最新版のソースコードは[`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience)ブランチで公開しています。  
+> 最新版の公開サイト：<https://golden-pot-shop-v2.onrender.com>
+
 
 Ruby on Railsで制作した、壺を販売する架空のECサイト風ポートフォリオです。
 
+
 金・銀・銅の壺を、大・中・小のサイズ別に表示しています。
+
 
 ## スクリーンショット
 
+
 ![黄金堂トップページ](docs/images/golden-pot-shop.png)
+
 
 ## 公開サイト
 
+
 https://golden-pot-shop-1.onrender.com
 
+
 ## 主な機能
+
 
 - 商品一覧表示
 - 商品詳細表示
@@ -24,7 +36,9 @@ https://golden-pot-shop-1.onrender.com
 - 管理用ページ
 - RenderによるWeb公開
 
+
 ## 使用技術
+
 
 - Ruby 3.3.6
 - Ruby on Rails 8.1.3
@@ -35,24 +49,8 @@ https://golden-pot-shop-1.onrender.com
 - Docker
 - Render
 
+
 ## 制作の目的
 
-Ruby on Railsの学習成果を形にするために制作しました。
 
-商品データの管理、ルーティング、データベース、ビュー、CSSによるデザイン、
-GitHubへのコード管理、Renderへのデプロイまで、一連のWebアプリ開発を実践しています。
-
-## 工夫したポイント
-
-商品一覧では、素材によって金・銀・銅の画像を切り替えています。
-
-また、商品の「大・中・小」に合わせて壺の表示サイズも変更し、
-商品の違いが視覚的に分かるようにしました。
-
-黒と金を基調としたデザインにすることで、
-高級感のある架空の壺専門店を表現しています。
-
-## 注意事項
-
-このサイトはポートフォリオ用に制作した架空のWebサイトです。
-実際の商品販売・購入は行っていません。
+Ruby on Railsの学習成果を形にするために制作しました。 
