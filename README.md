@@ -13,6 +13,13 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 
 ![黄金堂トップページ](docs/images/golden-pot-shop.png)
 
+## 比較用公開リンク
+
+- [最初に作成したホームページ（V1）](https://golden-pot-shop-1.onrender.com)
+- [最初に作成した管理アプリ（V1）](https://golden-pot-shop-1.onrender.com/admin/dashboard)
+- [現在のホームページ（V2）](https://golden-pot-shop-v2.onrender.com)
+- [現在の管理者Console（V2）](https://golden-pot-shop-v2.onrender.com/admin/dashboard)
+
 ## バージョン情報
 
 | バージョン | ブランチ | ホームページ | 管理アプリ | 状態 |
@@ -58,7 +65,7 @@ GitHubへのコード管理、Renderへのデプロイまで、一連のWebア�
 
 ## 工夫したポイント
 
-商品一覧では、素材によって金・銀・銅の商品画像を切り替えています。
+商品一覧では、素材によって金・銀・銅の画像を切り替えています。
 
 また、商品の「大・中・小」に合わせて壺の表示サイズも変更し、
 商品の違いが視覚的に分かるようにしました。
