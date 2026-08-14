@@ -1,0 +1,26 @@
+<% content_for :title, "管理者ログイン | 黄金堂" %>
+
+<main class="admin-login-page">
+  <section class="admin-login-card" aria-labelledby="admin-login-title">
+    <p class="eyebrow">GOLDEN POT SHOP / V2</p>
+    <h1 id="admin-login-title">管理者ログイン</h1>
+    <p class="admin-login-lead">商品とコレクションを管理するための専用画面です。</p>
+
+    <%= form_with url: admin_login_path, class: "admin-login-form" do |form| %>
+      <div class="form-group">
+        <%= form.label :username, "ユーザー名" %>
+        <%= form.text_field :username, autocomplete: "username", autofocus: true, required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :password, "パスワード" %>
+        <%= form.password_field :password, autocomplete: "current-password", required: true %>
+      </div>
+      <%= form.submit "管理画面を開く", class: "button button-primary admin-login-submit" %>
+    <% end %>
+
+    <div class="admin-login-footer">
+      <%= link_to "ストアへ戻る", products_path %>
+      <span>認証情報はRenderの環境変数で管理されています。</span>
+    </div>
+  </section>
+</main>
