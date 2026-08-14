@@ -16,7 +16,7 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 ## 比較用公開リンク
 
 - [最初に作成したホームページ（V1）](https://golden-pot-shop-1.onrender.com)
-- [最初に作成した管理アプリ（V1）](https://golden-pot-shop-1.onrender.com/admin/dashboard)
+- [最初に作成した管理アプリ（V1）](https://golden-pot-shop-1.onrender.com/admin/dashboard/index)
 - [現在のホームページ（V2）](https://golden-pot-shop-v2.onrender.com)
 - [現在の管理者Console（V2）](https://golden-pot-shop-v2.onrender.com/admin/dashboard)
 
@@ -25,7 +25,7 @@ Ruby on Railsで制作した、壺を販売する架空のECサイト風ポー�
 | バージョン | ブランチ | ホームページ | 管理アプリ | 状態 |
 | --- | --- | --- | --- | --- |
 | **V2.0.0（現在）** | [`v2/experience`](https://github.com/gifted1984-del/golden-pot-shop/tree/v2/experience) | [公開サイト](https://golden-pot-shop-v2.onrender.com) | [管理者Console V2](https://golden-pot-shop-v2.onrender.com/admin/dashboard) | 公開中 |
-| **V1（初期版）** | [`main`](https://github.com/gifted1984-del/golden-pot-shop/tree/main) | [初期版ホームページ](https://golden-pot-shop-1.onrender.com) | [初期版管理アプリ](https://golden-pot-shop-1.onrender.com/admin/dashboard) | 比較用に公開を維持 |
+| **V1（初期版）** | [`main`](https://github.com/gifted1984-del/golden-pot-shop/tree/main) | [初期版ホームページ](https://golden-pot-shop-1.onrender.com) | [初期版管理アプリ](https://golden-pot-shop-1.onrender.com/admin/dashboard/index) | 比較用に公開を維持 |
 
 V2.0.0には、素材を巡るストーリー型ホームページ、カタログ絞り込み、管理者用Console V2、購入体験を示す決済デモを含みます。
 
