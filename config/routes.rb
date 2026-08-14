@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "admin/login", to: "admin/sessions#new", as: :admin_login
+  post "admin/login", to: "admin/sessions#create"
+  delete "admin/logout", to: "admin/sessions#destroy", as: :admin_logout
+
   namespace :admin do
     get "dashboard", to: "dashboard#index"
     resources :products, except: :show
