@@ -8,17 +8,22 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_admin!
-    username = ENV["ADMIN_USERNAME"] || local_admin_username
-    password = ENV["ADMIN_PASSWORD"] || local_admin_password
+    return if session[:admin_authenticated] == true
 
-    if username.blank? || password.blank?
-      raise "ADMIN_USERNAME and ADMIN_PASSWORD must be configured outside local development."
-    end
+    session[:admin_return_to] = request.fullpath if request.get?
+    redirect_to admin_login_path, alert: "管理画面を開くにはログインしてください。"
+  end
 
-    authenticate_or_request_with_http_basic("Golden Pot Shop administration") do |provided_username, provided_password|
-      ActiveSupport::SecurityUtils.secure_compare(provided_username, username) &
-        ActiveSupport::SecurityUtils.secure_compare(provided_password, password)
-    end
+  def admin_credentials_valid?(provided_username, provided_password)
+    username, password = admin_credentials
+    return false if username.blank? || password.blank?
+
+    ActiveSupport::SecurityUtils.secure_compare(Digest::SHA256.hexdigest(provided_username.to_s), Digest::SHA256.hexdigest(username)) &
+      ActiveSupport::SecurityUtils.secure_compare(Digest::SHA256.hexdigest(provided_password.to_s), Digest::SHA256.hexdigest(password))
+  end
+
+  def admin_credentials
+    [ENV["ADMIN_USERNAME"].presence || local_admin_username, ENV["ADMIN_PASSWORD"].presence || local_admin_password]
   end
 
   def local_admin_username
