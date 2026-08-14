@@ -10,6 +10,7 @@
       <%= link_to new_admin_product_path, class: "admin-nav-link" do %><span>＋</span> 商品を追加<% end %>
     </nav>
     <%= link_to products_path, class: "admin-store-link" do %>ストアを表示 <span aria-hidden="true">↗</span><% end %>
+    <%= button_to "ログアウト", admin_logout_path, method: :delete, class: "admin-logout-link" %>
   </aside>
 
   <main class="admin-v2-main">
